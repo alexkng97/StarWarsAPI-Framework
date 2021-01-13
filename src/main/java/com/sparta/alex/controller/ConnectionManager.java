@@ -11,17 +11,18 @@ import java.util.Map;
 
 public class ConnectionManager {
 
-	private static final String BASE_URL = "https://swapi.dev/api/";
+	public static final String BASE_URL = "https://swapi.dev/api/";
 
-	HttpResponse httpResponse = null;
-	HttpClient httpClient = HttpClient.newHttpClient();
+	HttpResponse<String> httpResponse = null;
+	HttpClient httpClient;
 	HttpRequest httpRequest;
 	HttpHeaders httpHeaders = null;
 	private Map<String, List<String>> headersMap;
 
-	public ConnectionManager(){
+	public ConnectionManager(String url){
 		try{
-			httpRequest = HttpRequest.newBuilder().uri(URI.create(BASE_URL)).build();
+			httpClient = HttpClient.newHttpClient();
+			httpRequest = HttpRequest.newBuilder().uri(URI.create(url)).build();
 			httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
 			httpHeaders = httpResponse.headers();
 
@@ -31,6 +32,10 @@ public class ConnectionManager {
 			e.printStackTrace();
 		}
 
+	}
+
+	public HttpResponse getHttpResponse() {
+		return httpResponse;
 	}
 
 	public int getStatusCode(){

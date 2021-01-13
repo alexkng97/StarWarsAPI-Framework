@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class ConnectionManagerTest {
-	ConnectionManager connectionManager = new ConnectionManager();
+	ConnectionManager connectionManager = new ConnectionManager("https://swapi.dev/api/");
 
 
 	@Test
