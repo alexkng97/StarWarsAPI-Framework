@@ -33,4 +33,11 @@ public class ConnectionManagerTest {
 		Assertions.assertEquals(connectionManager.getResponseServer(),connectionManager.searchResponseHeaders("server"));
 	}
 
+	@Test
+	@DisplayName("Get http version method test")
+	void getHttpVersionMethodTest() {
+		Assertions.assertEquals("HTTP_2", connectionManager.getHttpVersion());
+
+	}
+
 }

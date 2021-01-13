@@ -60,6 +60,11 @@ public class ConnectionManager {
 
 	}
 
+	public String getHttpVersion(){
+		HttpClient.Version version = httpResponse.version();
+		return version.name();
+	}
+
 
 
 
