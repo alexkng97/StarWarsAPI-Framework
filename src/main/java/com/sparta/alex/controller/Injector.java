@@ -17,8 +17,8 @@ public class Injector {
 
 	}
 
-	public PeopleDTO injectIntoPeople(String id){
-		String url = BASE_URL + "people/" + id +"/";
+	public PeopleDTO injectIntoPeople(int id){
+		String url = BASE_URL + "people/" + String.valueOf(id) + "/";
 		peopleDTO = new PeopleDTO();
 		connectionManager = new ConnectionManager(url);
 

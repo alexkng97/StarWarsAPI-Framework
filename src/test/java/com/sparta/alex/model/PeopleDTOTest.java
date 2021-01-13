@@ -11,6 +11,15 @@ public class PeopleDTOTest {
 	@DisplayName("Testing Luke")
 	void testingLuke() {
 		Injector injector = new Injector();
-		Assertions.assertEquals("Luke Skywalker",injector.injectIntoPeople("1").getName());
+		Assertions.assertEquals("Luke Skywalker", injector.injectIntoPeople(1).getName());
 	}
+
+	@Test
+	@DisplayName("testing what is stored in homeworld")
+	void testingWhatIsStoredInHomeworld() {
+		Injector injector = new Injector();
+		System.out.println(injector.injectIntoPeople(1).getHomeworld());
+
+	}
+
 }
