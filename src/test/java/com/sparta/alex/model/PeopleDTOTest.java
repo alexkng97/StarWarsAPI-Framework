@@ -1,4 +1,4 @@
-package model;
+package com.sparta.alex.model;
 
 import com.sparta.alex.controller.Injector;
 import org.junit.jupiter.api.Assertions;
