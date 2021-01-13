@@ -12,11 +12,11 @@ public class PeopleDTO {
 	private String eye_color;
 	private String birth_year;
 	private String gender;
-	private PlanetsDTO homeworld;
-	private List<FilmsDTO> films;
-	private List<SpeciesDTO> species;
-	private List<VehiclesDTO> vehicles;
-	private List<StarshipsDTO> starships;
+	private String homeworld;
+	private List<String> films;
+	private List<String> species;
+	private List<String> vehicles;
+	private List<String> starships;
 	private String created;
 	private String edited;
 	private String url;
@@ -88,43 +88,43 @@ public class PeopleDTO {
 		this.gender = gender;
 	}
 
-	public PlanetsDTO getHomeworld() {
+	public String getHomeworld() {
 		return homeworld;
 	}
 
-	public void setHomeworld(PlanetsDTO homeworld) {
+	public void setHomeworld(String homeworld) {
 		this.homeworld = homeworld;
 	}
 
-	public List<FilmsDTO> getFilms() {
+	public List<String> getFilms() {
 		return films;
 	}
 
-	public void setFilms(List<FilmsDTO> films) {
+	public void setFilms(List<String> films) {
 		this.films = films;
 	}
 
-	public List<SpeciesDTO> getSpecies() {
+	public List<String> getSpecies() {
 		return species;
 	}
 
-	public void setSpecies(List<SpeciesDTO> species) {
+	public void setSpecies(List<String> species) {
 		this.species = species;
 	}
 
-	public List<VehiclesDTO> getVehicles() {
+	public List<String> getVehicles() {
 		return vehicles;
 	}
 
-	public void setVehicles(List<VehiclesDTO> vehicles) {
+	public void setVehicles(List<String> vehicles) {
 		this.vehicles = vehicles;
 	}
 
-	public List<StarshipsDTO> getStarships() {
+	public List<String> getStarships() {
 		return starships;
 	}
 
-	public void setStarships(List<StarshipsDTO> starships) {
+	public void setStarships(List<String> starships) {
 		this.starships = starships;
 	}
 
