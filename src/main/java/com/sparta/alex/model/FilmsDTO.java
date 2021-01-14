@@ -1,5 +1,8 @@
 package com.sparta.alex.model;
 
+import com.sparta.alex.controller.Injector;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class FilmsDTO {
@@ -68,6 +71,14 @@ public class FilmsDTO {
 	}
 
 	public List<String> getCharacters() {
+		if(characters.size() > 0){
+			List<String> characterNames = new ArrayList<>();
+			for(String peopleURL: characters){
+				characterNames.add(Injector.injectIntoPeople(Injector.getIDFromURL(peopleURL)).getName());
+			}
+
+			return characterNames;
+		}
 		return characters;
 	}
 
@@ -76,6 +87,14 @@ public class FilmsDTO {
 	}
 
 	public List<String> getPlanets() {
+		if(planets.size() > 0){
+			List<String> planetNames = new ArrayList<>();
+			for(String planetsURL: planets){
+				planetNames.add(Injector.injectIntoPlanets(Injector.getIDFromURL(planetsURL)).getName());
+			}
+
+			return planetNames;
+		}
 		return planets;
 	}
 
@@ -84,6 +103,14 @@ public class FilmsDTO {
 	}
 
 	public List<String> getStarships() {
+		if(starships.size() > 0){
+			List<String> starshipsName = new ArrayList<>();
+			for(String starshipsURL: starships){
+				starshipsName.add(Injector.injectIntoStarships(Injector.getIDFromURL(starshipsURL)).getName());
+			}
+
+			return starshipsName;
+		}
 		return starships;
 	}
 
@@ -92,7 +119,16 @@ public class FilmsDTO {
 	}
 
 	public List<String> getVehicles() {
+		if(vehicles.size() > 0){
+			List<String> vehiclesName = new ArrayList<>();
+			for(String vehiclesURL : vehicles){
+				vehiclesName.add(Injector.injectIntoVehicle(Injector.getIDFromURL(vehiclesURL)).getName());
+			}
+
+			return vehiclesName;
+		}
 		return vehicles;
+
 	}
 
 	public void setVehicles(List<String> vehicles) {
@@ -100,6 +136,15 @@ public class FilmsDTO {
 	}
 
 	public List<String> getSpecies() {
+		if(species.size() > 0){
+			List<String> speciesName = new ArrayList<>();
+			for(String speciesURL : species){
+				speciesName.add(Injector.injectIntoSpecies(Injector.getIDFromURL(speciesURL)).getName());
+			}
+
+			return speciesName;
+		}
+
 		return species;
 	}
 
