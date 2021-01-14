@@ -14,5 +14,18 @@ public class PlanetDTOTest {
 
 	}
 
+	@Test
+	@DisplayName("who lives on tatooine")
+	void whoLivesOnTatooine() {
+		System.out.println(Injector.injectIntoPlanets(1).getResidents());
+
+	}
+
+	@Test
+	@DisplayName("why was cloud city only in one film")
+	void whyWasCloudCityOnlyInOneFilm() {
+		System.out.println(Injector.injectIntoPlanets(6).getFilms());
+	}
+
 
 }

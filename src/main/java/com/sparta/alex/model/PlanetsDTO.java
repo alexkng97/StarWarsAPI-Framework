@@ -1,5 +1,8 @@
 package com.sparta.alex.model;
 
+import com.sparta.alex.controller.Injector;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlanetsDTO {
@@ -92,14 +95,31 @@ public class PlanetsDTO {
 	}
 
 	public List<String> getResidents() {
+		if(residents.size() > 0){
+			List<String> residentNames = new ArrayList<>();
+			for(String residentsURL: residents){
+				residentNames.add(Injector.injectIntoPeople(Injector.getIDFromURL(residentsURL)).getName());
+			}
+
+			return residentNames;
+		}
 		return residents;
 	}
+
 
 	public void setResidents(List<String> residents) {
 		this.residents = residents;
 	}
 
 	public List<String> getFilms() {
+		if(films.size() > 0) {
+			List<String> filmTitles = new ArrayList<>();
+			for (String filmURL : films) {
+				filmTitles.add(Injector.injectIntoFilms(Injector.getIDFromURL(filmURL)).getTitle());
+			}
+
+			return filmTitles;
+		}
 		return films;
 	}
 
