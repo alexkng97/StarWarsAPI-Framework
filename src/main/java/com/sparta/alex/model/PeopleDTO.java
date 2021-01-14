@@ -130,6 +130,14 @@ public class PeopleDTO {
 	}
 
 	public List<String> getVehicles() {
+		if(vehicles.size() > 0){
+			List<String> vehiclesName = new ArrayList<>();
+			for(String vehiclesURL : vehicles){
+				vehiclesName.add(Injector.injectIntoVehicle(Injector.getIDFromURL(vehiclesURL)).getName());
+			}
+
+			return vehiclesName;
+		}
 		return vehicles;
 	}
 

@@ -1,10 +1,7 @@
 package com.sparta.alex.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sparta.alex.model.FilmsDTO;
-import com.sparta.alex.model.PeopleDTO;
-import com.sparta.alex.model.PlanetsDTO;
-import com.sparta.alex.model.SpeciesDTO;
+import com.sparta.alex.model.*;
 
 import java.io.IOException;
 
@@ -81,6 +78,22 @@ public class Injector {
 		}
 
 		return speciesDTO;
+	}
+
+	public static VehiclesDTO injectIntoVehicle(int id) {
+		String url = BASE_URL + "vehicles/" + id + "/";
+		VehiclesDTO vehiclesDTO = new VehiclesDTO();
+		ConnectionManager connectionManager = new ConnectionManager(url);
+		ObjectMapper objectMapper = new ObjectMapper();
+
+		try {
+			vehiclesDTO = objectMapper.readValue(connectionManager.httpResponse.body(), VehiclesDTO.class);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return vehiclesDTO;
 	}
 
 

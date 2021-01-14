@@ -55,4 +55,17 @@ public class PeopleDTOTest {
 		System.out.println(Injector.injectIntoPeople(3).getSpecies().toString());
 	}
 
+	@Test
+	@DisplayName("vehicles test")
+	void vehiclesTest() {
+		System.out.println(Injector.injectIntoPeople(1).getVehicles().toString());
+
+	}
+
+	@Test
+	@DisplayName("can R2D2 drive")
+	void canR2D2Drive() {
+		Assertions.assertEquals(0, Injector.injectIntoPeople(3).getVehicles().size());
+	}
+
 }
