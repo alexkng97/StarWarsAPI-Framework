@@ -12,4 +12,24 @@ public class VehiclesDTOTest {
 	void testForGetName() {
 		Assertions.assertEquals("Imperial Speeder Bike", Injector.injectIntoVehicle(30).getName());
 	}
+
+	@Test
+	@DisplayName("Who drives the speeder bike?")
+	void whoDrivesTheSpeederBike() {
+		System.out.println(Injector.injectIntoVehicle(30).getPilots());
+
+	}
+
+	@Test
+	@DisplayName("vehicle with no pilots")
+	void vehicleWithNoPilots() {
+		System.out.println(Injector.injectIntoVehicle(54).getPilots());
+	}
+
+	@Test
+	@DisplayName("get films that this vehicle was in")
+	void getFilmsThatThisVehicleWasIn() {
+		System.out.println(Injector.injectIntoVehicle(50).getFilms());
+	}
+
 }
