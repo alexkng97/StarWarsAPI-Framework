@@ -20,5 +20,17 @@ public class StarshipsDTOTest {
 		System.out.println(jediStar.getUrl());
 	}
 
+	@Test
+	@DisplayName("pilots of the x wing")
+	void pilotsOfTheXWing() {
+		System.out.println(Injector.injectIntoStarships(12).getPilots());
+	}
+
+	@Test
+	@DisplayName("films that the death star is in")
+	void filmsThatTheDeathStarIsIn() {
+		System.out.println(Injector.injectIntoStarships(10).getFilms());
+	}
+
 
 }

@@ -1,7 +1,9 @@
 package com.sparta.alex.model ;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sparta.alex.controller.Injector;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -126,13 +128,29 @@ public class StarshipsDTO{
 		this.pilots = pilots;
 	}
 	public List<String> getPilots(){
-		return this.pilots;
+		if(pilots.size() > 0){
+			List<String> pilotNames = new ArrayList<>();
+			for(String pilotsURL: pilots){
+				pilotNames.add(Injector.injectIntoPeople(Injector.getIDFromURL(pilotsURL)).getName());
+			}
+
+			return pilotNames;
+		}
+		return pilots;
 	}
 	public void setFilms(List<String> films){
 		this.films = films;
 	}
 	public List<String> getFilms(){
-		return this.films;
+		if(films.size() > 0) {
+			List<String> filmTitles = new ArrayList<>();
+			for (String filmURL : films) {
+				filmTitles.add(Injector.injectIntoFilms(Injector.getIDFromURL(filmURL)).getTitle());
+			}
+
+			return filmTitles;
+		}
+		return films;
 	}
 	public void setCreated(String created){
 		this.created = created;
