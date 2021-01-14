@@ -5,7 +5,7 @@ import com.sparta.alex.controller.Injector;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VehiclesDTO {
+public class VehiclesDTO extends DTO {
 
 	private String name;
 	private String model;

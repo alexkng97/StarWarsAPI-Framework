@@ -5,7 +5,7 @@ import com.sparta.alex.controller.Injector;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SpeciesDTO {
+public class SpeciesDTO extends DTO {
 
 	private String name;
 	private String classification;

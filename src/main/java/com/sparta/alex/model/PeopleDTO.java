@@ -5,7 +5,7 @@ import com.sparta.alex.controller.Injector;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PeopleDTO {
+public class PeopleDTO extends DTO{
 
 	private String name;
 	private String height;

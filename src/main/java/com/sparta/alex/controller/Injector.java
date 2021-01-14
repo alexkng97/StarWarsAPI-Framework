@@ -16,6 +16,27 @@ public class Injector {
 		return Integer.parseInt(split[5]);
 	}
 
+	public static DTO injectByURL(String url){
+		String split[] = url.split("/");
+		int id = Integer.parseInt(split[5]);
+		switch(split[4]){
+			case "people":
+				return injectIntoPeople(id);
+			case "films":
+				return injectIntoFilms(id);
+			case "planets":
+				return injectIntoPlanets(id);
+			case "species":
+				return injectIntoSpecies(id);
+			case "starships":
+				return injectIntoStarships(id);
+			case "vehicles":
+				return injectIntoVehicle(id);
+		}
+		return null;
+	}
+
+
 	public static PeopleDTO injectIntoPeople(int id) {
 		String url = BASE_URL + "people/" + id + "/";
 		ObjectMapper objectMapper = new ObjectMapper();

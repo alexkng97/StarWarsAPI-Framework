@@ -5,7 +5,7 @@ import com.sparta.alex.controller.Injector;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FilmsDTO {
+public class FilmsDTO extends DTO {
 
 	private String title;
 	private int episode_id;
