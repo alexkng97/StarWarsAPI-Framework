@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sparta.alex.model.FilmsDTO;
 import com.sparta.alex.model.PeopleDTO;
 import com.sparta.alex.model.PlanetsDTO;
+import com.sparta.alex.model.SpeciesDTO;
 
 import java.io.IOException;
 
@@ -64,6 +65,22 @@ public class Injector {
 		}
 
 		return filmsDTO;
+	}
+
+	public static SpeciesDTO injectIntoSpecies(int id) {
+		String url = BASE_URL + "species/" + id + "/";
+		SpeciesDTO speciesDTO = new SpeciesDTO();
+		ConnectionManager connectionManager = new ConnectionManager(url);
+		ObjectMapper objectMapper = new ObjectMapper();
+
+		try {
+			speciesDTO = objectMapper.readValue(connectionManager.httpResponse.body(), SpeciesDTO.class);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return speciesDTO;
 	}
 
 

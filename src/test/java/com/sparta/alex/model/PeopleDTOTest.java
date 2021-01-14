@@ -42,4 +42,17 @@ public class PeopleDTOTest {
 
 	}
 
+	@Test
+	@DisplayName("what does empty species return")
+	void whatDoesEmptySpeciesReturn() {
+		System.out.println(Injector.injectIntoPeople(5).getSpecies());
+
+	}
+
+	@Test
+	@DisplayName("r2d2 species")
+	void r2D2Species() {
+		System.out.println(Injector.injectIntoPeople(3).getSpecies().toString());
+	}
+
 }

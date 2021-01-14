@@ -113,6 +113,15 @@ public class PeopleDTO {
 	}
 
 	public List<String> getSpecies() {
+		if(species.size() > 0){
+			List<String> speciesName = new ArrayList<>();
+			for(String speciesURL : species){
+				speciesName.add(Injector.injectIntoSpecies(Injector.getIDFromURL(speciesURL)).getName());
+			}
+
+			return speciesName;
+		}
+
 		return species;
 	}
 
