@@ -1,5 +1,8 @@
 package com.sparta.alex.model;
 
+import com.sparta.alex.controller.Injector;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class PeopleDTO {
@@ -89,6 +92,9 @@ public class PeopleDTO {
 	}
 
 	public String getHomeworld() {
+		if(homeworld != null) {
+			return Injector.injectIntoPlanets(Injector.getIDFromURL(homeworld)).getName();
+		}
 		return homeworld;
 	}
 
@@ -97,7 +103,12 @@ public class PeopleDTO {
 	}
 
 	public List<String> getFilms() {
-		return films;
+		List<String> filmTitles = new ArrayList<>();
+		for(String filmURL : films){
+			filmTitles.add(Injector.injectIntoFilms(Injector.getIDFromURL(filmURL)).getTitle());
+		}
+
+		return filmTitles;
 	}
 
 	public void setFilms(List<String> films) {
@@ -105,6 +116,15 @@ public class PeopleDTO {
 	}
 
 	public List<String> getSpecies() {
+		if(species.size() > 0){
+			List<String> speciesName = new ArrayList<>();
+			for(String speciesURL : species){
+				speciesName.add(Injector.injectIntoSpecies(Injector.getIDFromURL(speciesURL)).getName());
+			}
+
+			return speciesName;
+		}
+
 		return species;
 	}
 
@@ -113,6 +133,14 @@ public class PeopleDTO {
 	}
 
 	public List<String> getVehicles() {
+		if(vehicles.size() > 0){
+			List<String> vehiclesName = new ArrayList<>();
+			for(String vehiclesURL : vehicles){
+				vehiclesName.add(Injector.injectIntoVehicle(Injector.getIDFromURL(vehiclesURL)).getName());
+			}
+
+			return vehiclesName;
+		}
 		return vehicles;
 	}
 
@@ -121,6 +149,14 @@ public class PeopleDTO {
 	}
 
 	public List<String> getStarships() {
+		if(starships.size() > 0){
+			List<String> starshipsName = new ArrayList<>();
+			for(String starshipsURL: starships){
+				starshipsName.add(Injector.injectIntoStarships(Injector.getIDFromURL(starshipsURL)).getName());
+			}
+
+			return starshipsName;
+		}
 		return starships;
 	}
 

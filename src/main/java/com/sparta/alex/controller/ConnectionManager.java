@@ -34,10 +34,6 @@ public class ConnectionManager {
 
 	}
 
-	public HttpResponse getHttpResponse() {
-		return httpResponse;
-	}
-
 	public int getStatusCode(){
 		return httpResponse.statusCode();
 	}
