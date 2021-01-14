@@ -1,6 +1,7 @@
 package com.sparta.alex.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sparta.alex.model.FilmsDTO;
 import com.sparta.alex.model.PeopleDTO;
 import com.sparta.alex.model.PlanetsDTO;
 
@@ -46,6 +47,22 @@ public class Injector {
 
 		return planetsDTO;
 
+	}
+
+	public static FilmsDTO injectIntoFilms(int id){
+		String url = BASE_URL + "films/" + id + "/";
+		FilmsDTO filmsDTO = new FilmsDTO();
+		ConnectionManager connectionManager = new ConnectionManager(url);
+		ObjectMapper objectMapper = new ObjectMapper();
+
+		try{
+			filmsDTO = objectMapper.readValue(connectionManager.httpResponse.body(), FilmsDTO.class);
+
+		} catch (IOException e){
+			e.printStackTrace();
+		}
+
+		return filmsDTO;
 	}
 
 
