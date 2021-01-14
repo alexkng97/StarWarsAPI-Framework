@@ -1,5 +1,7 @@
 package com.sparta.alex.model;
 
+import com.sparta.alex.controller.Injector;
+
 import java.util.List;
 
 public class PeopleDTO {
@@ -89,7 +91,7 @@ public class PeopleDTO {
 	}
 
 	public String getHomeworld() {
-		return homeworld;
+		return Injector.injectIntoPlanets(Injector.getIDFromURL(homeworld)).getName();
 	}
 
 	public void setHomeworld(String homeworld) {

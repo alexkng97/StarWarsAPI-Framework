@@ -11,6 +11,11 @@ public class Injector {
 
 	public Injector() { }
 
+	public static int getIDFromURL(String url){
+		String split [] = url.split("/");
+		return Integer.parseInt(split[5]);
+	}
+
 	public static PeopleDTO injectIntoPeople(int id) {
 		String url = BASE_URL + "people/" + id + "/";
 		ObjectMapper objectMapper = new ObjectMapper();

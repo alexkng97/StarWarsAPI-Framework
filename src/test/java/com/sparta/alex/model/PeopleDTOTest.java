@@ -23,8 +23,15 @@ public class PeopleDTOTest {
 	@Test
 	@DisplayName("testing what is stored in homeworld")
 	void testingWhatIsStoredInHomeworld() {
+		//System.out.println(Injector.injectIntoPeople(1).getHomeworld());
+		Assertions.assertEquals("Tatooine", Injector.injectIntoPeople(1).getHomeworld());
 
-		System.out.println(Injector.injectIntoPeople(1).getHomeworld());
+	}
+
+	@Test
+	@DisplayName("R2D2 has a homeworld?")
+	void r2D2HasAHomeworld() {
+		Assertions.assertEquals("Naboo", Injector.injectIntoPeople(3).getHomeworld());
 
 	}
 
