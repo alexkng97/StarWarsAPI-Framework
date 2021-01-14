@@ -92,7 +92,10 @@ public class PeopleDTO {
 	}
 
 	public String getHomeworld() {
-		return Injector.injectIntoPlanets(Injector.getIDFromURL(homeworld)).getName();
+		if(homeworld != null) {
+			return Injector.injectIntoPlanets(Injector.getIDFromURL(homeworld)).getName();
+		}
+		return homeworld;
 	}
 
 	public void setHomeworld(String homeworld) {
@@ -146,6 +149,14 @@ public class PeopleDTO {
 	}
 
 	public List<String> getStarships() {
+		if(starships.size() > 0){
+			List<String> starshipsName = new ArrayList<>();
+			for(String starshipsURL: starships){
+				starshipsName.add(Injector.injectIntoStarships(Injector.getIDFromURL(starshipsURL)).getName());
+			}
+
+			return starshipsName;
+		}
 		return starships;
 	}
 

@@ -68,4 +68,11 @@ public class PeopleDTOTest {
 		Assertions.assertEquals(0, Injector.injectIntoPeople(3).getVehicles().size());
 	}
 
+	@Test
+	@DisplayName("Lukes Starships")
+	void lukesStarships() {
+		System.out.println(Injector.injectIntoPeople(1).getStarships().toString());
+
+	}
+
 }
