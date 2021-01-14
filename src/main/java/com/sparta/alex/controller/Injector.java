@@ -96,5 +96,21 @@ public class Injector {
 		return vehiclesDTO;
 	}
 
+	public static StarshipsDTO injectIntoStarships(int id) {
+		String url = BASE_URL + "starships/" + id + "/";
+		StarshipsDTO starshipsDTO = new StarshipsDTO();
+		ConnectionManager connectionManager = new ConnectionManager(url);
+		ObjectMapper objectMapper = new ObjectMapper();
+
+		try {
+			starshipsDTO = objectMapper.readValue(connectionManager.httpResponse.body(), StarshipsDTO.class);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return starshipsDTO;
+	}
+
 
 }
