@@ -35,4 +35,11 @@ public class PeopleDTOTest {
 
 	}
 
+	@Test
+	@DisplayName("R2D2 films")
+	void r2D2Films() {
+		System.out.println(Injector.injectIntoPeople(3).getFilms().toString());;
+
+	}
+
 }

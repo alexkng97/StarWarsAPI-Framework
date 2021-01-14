@@ -2,6 +2,7 @@ package com.sparta.alex.model;
 
 import com.sparta.alex.controller.Injector;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PeopleDTO {
@@ -99,7 +100,12 @@ public class PeopleDTO {
 	}
 
 	public List<String> getFilms() {
-		return films;
+		List<String> filmTitles = new ArrayList<>();
+		for(String filmURL : films){
+			filmTitles.add(Injector.injectIntoFilms(Injector.getIDFromURL(filmURL)).getTitle());
+		}
+
+		return filmTitles;
 	}
 
 	public void setFilms(List<String> films) {

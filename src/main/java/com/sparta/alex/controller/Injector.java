@@ -10,10 +10,11 @@ import java.io.IOException;
 public class Injector {
 	private static String BASE_URL = ConnectionManager.BASE_URL;
 
-	public Injector() { }
+	public Injector() {
+	}
 
-	public static int getIDFromURL(String url){
-		String split [] = url.split("/");
+	public static int getIDFromURL(String url) {
+		String split[] = url.split("/");
 		return Integer.parseInt(split[5]);
 	}
 
@@ -49,16 +50,16 @@ public class Injector {
 
 	}
 
-	public static FilmsDTO injectIntoFilms(int id){
+	public static FilmsDTO injectIntoFilms(int id) {
 		String url = BASE_URL + "films/" + id + "/";
 		FilmsDTO filmsDTO = new FilmsDTO();
 		ConnectionManager connectionManager = new ConnectionManager(url);
 		ObjectMapper objectMapper = new ObjectMapper();
 
-		try{
+		try {
 			filmsDTO = objectMapper.readValue(connectionManager.httpResponse.body(), FilmsDTO.class);
 
-		} catch (IOException e){
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
