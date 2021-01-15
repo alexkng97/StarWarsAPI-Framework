@@ -125,6 +125,16 @@ public class VehiclesDTO extends DTO {
 		return pilots;
 	}
 
+	public List<PeopleDTO> getPilotsAsDTO() {
+		List<PeopleDTO> characterNames = new ArrayList<>();
+		if (pilots.size() > 0) {
+			for (String peopleURL : pilots) {
+				characterNames.add(Injector.injectIntoPeople(Injector.getIDFromURL(peopleURL)));
+			}
+		}
+		return characterNames;
+	}
+
 	public void setPilots(List<String> pilots) {
 		this.pilots = pilots;
 	}
@@ -139,6 +149,14 @@ public class VehiclesDTO extends DTO {
 			return filmTitles;
 		}
 		return films;
+	}
+
+	public List<FilmsDTO> getFilmsAsDTO() {
+		List<FilmsDTO> filmsList = new ArrayList<>();
+		for (String filmURL : films) {
+			filmsList.add(Injector.injectIntoFilms(Injector.getIDFromURL(filmURL)));
+		}
+		return filmsList;
 	}
 
 	public void setFilms(List<String> films) {
