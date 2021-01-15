@@ -31,6 +31,12 @@ public class DemoTest {
 		}
 
 		@Test
+		@DisplayName("Print all response headers")
+		void printAllResponseHeaders() {
+			connectionManager.printAllResponseHeaders();
+		}
+
+		@Test
 		@DisplayName("Searching Response Headers")
 		void searchingResponseHeaders() {
 			System.out.println(connectionManager.searchResponseHeaders("server"));
@@ -115,7 +121,7 @@ public class DemoTest {
 
 
 
-			
+
 			//Getting Luke, first film he appears in (new hope), getting the second planet that appears(alderaan)
 			//getting the first resident (leia), getting her only vehicle (speeder bike) and getting that film.
 		}
