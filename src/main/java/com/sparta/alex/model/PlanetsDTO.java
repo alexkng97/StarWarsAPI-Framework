@@ -106,6 +106,16 @@ public class PlanetsDTO extends DTO {
 		return residents;
 	}
 
+	public List<PeopleDTO> getResidentsAsDTO(){
+		List<PeopleDTO> characterNames = new ArrayList<>();
+		if (residents.size() > 0) {
+			for (String peopleURL : residents) {
+				characterNames.add(Injector.injectIntoPeople(Injector.getIDFromURL(peopleURL)));
+			}
+		}
+		return characterNames;
+	}
+
 
 	public void setResidents(List<String> residents) {
 		this.residents = residents;
@@ -121,6 +131,14 @@ public class PlanetsDTO extends DTO {
 			return filmTitles;
 		}
 		return films;
+	}
+
+	public List<FilmsDTO> getFilmsAsDTO() {
+		List<FilmsDTO> filmsList = new ArrayList<>();
+		for (String filmURL : films) {
+			filmsList.add(Injector.injectIntoFilms(Injector.getIDFromURL(filmURL)));
+		}
+		return filmsList;
 	}
 
 	public void setFilms(List<String> films) {
