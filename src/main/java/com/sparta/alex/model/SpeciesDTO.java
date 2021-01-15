@@ -88,10 +88,19 @@ public class SpeciesDTO extends DTO {
 	}
 
 	public String getHomeworld() {
-		if(homeworld != null) {
+		if (homeworld != null) {
 			return Injector.injectIntoPlanets(Injector.getIDFromURL(homeworld)).getName();
 		}
 		return homeworld;
+	}
+
+	public PlanetsDTO getHomeworldAsDTO() {
+		PlanetsDTO result = new PlanetsDTO();
+		if (homeworld != null) {
+			result = Injector.injectIntoPlanets(Injector.getIDFromURL(homeworld));
+		}
+
+		return result;
 	}
 
 	public void setHomeworld(String homeworld) {
@@ -107,9 +116,9 @@ public class SpeciesDTO extends DTO {
 	}
 
 	public List<String> getPeople() {
-		if(people.size() > 0){
+		if (people.size() > 0) {
 			List<String> peoplesNames = new ArrayList<>();
-			for(String peoplesURL: people){
+			for (String peoplesURL : people) {
 				peoplesNames.add(Injector.injectIntoPeople(Injector.getIDFromURL(peoplesURL)).getName());
 			}
 			return peoplesNames;
@@ -117,12 +126,22 @@ public class SpeciesDTO extends DTO {
 		return people;
 	}
 
+	public List<PeopleDTO> getPeopleAsDTO() {
+		List<PeopleDTO> characterNames = new ArrayList<>();
+		if (people.size() > 0) {
+			for (String peopleURL : people) {
+				characterNames.add(Injector.injectIntoPeople(Injector.getIDFromURL(peopleURL)));
+			}
+		}
+		return characterNames;
+	}
+
 	public void setPeople(List<String> people) {
 		this.people = people;
 	}
 
 	public List<String> getFilms() {
-		if(films.size() > 0) {
+		if (films.size() > 0) {
 			List<String> filmTitles = new ArrayList<>();
 			for (String filmURL : films) {
 				filmTitles.add(Injector.injectIntoFilms(Injector.getIDFromURL(filmURL)).getTitle());
@@ -131,6 +150,14 @@ public class SpeciesDTO extends DTO {
 			return filmTitles;
 		}
 		return films;
+	}
+
+	public List<FilmsDTO> getFilmsAsDTO() {
+		List<FilmsDTO> filmsList = new ArrayList<>();
+		for (String filmURL : films) {
+			filmsList.add(Injector.injectIntoFilms(Injector.getIDFromURL(filmURL)));
+		}
+		return filmsList;
 	}
 
 	public void setFilms(List<String> films) {
