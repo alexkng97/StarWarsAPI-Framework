@@ -75,4 +75,16 @@ public class PeopleDTOTest {
 
 	}
 
+	@Test
+	@DisplayName("getting homeworld as PlanetsDTO")
+	void gettingHomeworldAsPlanetsDto() {
+		Assertions.assertEquals("arid", Injector.injectIntoPeople(1).getHomeworldAsDTO().getClimate());
+	}
+
+	@Test
+	@DisplayName("Getting R2D2 films as DTO")
+	void gettingR2D2FilmsAsDto() {
+		System.out.println(Injector.injectIntoPeople(3).getFilmsAsDTO().get(0).getRelease_date());
+	}
+
 }

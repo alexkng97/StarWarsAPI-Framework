@@ -5,7 +5,7 @@ import com.sparta.alex.controller.Injector;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PeopleDTO extends DTO{
+public class PeopleDTO extends DTO {
 
 	private String name;
 	private String height;
@@ -92,10 +92,19 @@ public class PeopleDTO extends DTO{
 	}
 
 	public String getHomeworld() {
-		if(homeworld != null) {
+		if (homeworld != null) {
 			return Injector.injectIntoPlanets(Injector.getIDFromURL(homeworld)).getName();
 		}
 		return homeworld;
+	}
+
+	public PlanetsDTO getHomeworldAsDTO() {
+		PlanetsDTO result = new PlanetsDTO();
+		if (homeworld != null) {
+			result = Injector.injectIntoPlanets(Injector.getIDFromURL(homeworld));
+		}
+
+		return result;
 	}
 
 	public void setHomeworld(String homeworld) {
@@ -104,11 +113,19 @@ public class PeopleDTO extends DTO{
 
 	public List<String> getFilms() {
 		List<String> filmTitles = new ArrayList<>();
-		for(String filmURL : films){
+		for (String filmURL : films) {
 			filmTitles.add(Injector.injectIntoFilms(Injector.getIDFromURL(filmURL)).getTitle());
 		}
 
 		return filmTitles;
+	}
+
+	public List<FilmsDTO> getFilmsAsDTO() {
+		List<FilmsDTO> filmsList = new ArrayList<>();
+		for (String filmURL : films) {
+			filmsList.add(Injector.injectIntoFilms(Injector.getIDFromURL(filmURL)));
+		}
+		return filmsList;
 	}
 
 	public void setFilms(List<String> films) {
@@ -116,16 +133,25 @@ public class PeopleDTO extends DTO{
 	}
 
 	public List<String> getSpecies() {
-		if(species.size() > 0){
+		if (species.size() > 0) {
 			List<String> speciesName = new ArrayList<>();
-			for(String speciesURL : species){
+			for (String speciesURL : species) {
 				speciesName.add(Injector.injectIntoSpecies(Injector.getIDFromURL(speciesURL)).getName());
 			}
 
 			return speciesName;
 		}
-
 		return species;
+	}
+
+	public List<SpeciesDTO> getSpeciesAsDTO() {
+		List<SpeciesDTO> speciesDTOs = new ArrayList<>();
+		if (species.size() > 0) {
+			for (String speciesURL : species) {
+				speciesDTOs.add(Injector.injectIntoSpecies(Injector.getIDFromURL(speciesURL)));
+			}
+		}
+		return speciesDTOs;
 	}
 
 	public void setSpecies(List<String> species) {
@@ -133,9 +159,9 @@ public class PeopleDTO extends DTO{
 	}
 
 	public List<String> getVehicles() {
-		if(vehicles.size() > 0){
+		if (vehicles.size() > 0) {
 			List<String> vehiclesName = new ArrayList<>();
-			for(String vehiclesURL : vehicles){
+			for (String vehiclesURL : vehicles) {
 				vehiclesName.add(Injector.injectIntoVehicle(Injector.getIDFromURL(vehiclesURL)).getName());
 			}
 
@@ -144,20 +170,40 @@ public class PeopleDTO extends DTO{
 		return vehicles;
 	}
 
+	public List<VehiclesDTO> getVehiclesAsDTO() {
+		List<VehiclesDTO> vehiclesDTOs = new ArrayList<>();
+		if (vehicles.size() > 0) {
+			for (String vehiclesURL : vehicles) {
+				vehiclesDTOs.add(Injector.injectIntoVehicle(Injector.getIDFromURL(vehiclesURL)));
+			}
+		}
+		return vehiclesDTOs;
+	}
+
 	public void setVehicles(List<String> vehicles) {
 		this.vehicles = vehicles;
 	}
 
 	public List<String> getStarships() {
-		if(starships.size() > 0){
+		if (starships.size() > 0) {
 			List<String> starshipsName = new ArrayList<>();
-			for(String starshipsURL: starships){
+			for (String starshipsURL : starships) {
 				starshipsName.add(Injector.injectIntoStarships(Injector.getIDFromURL(starshipsURL)).getName());
 			}
 
 			return starshipsName;
 		}
 		return starships;
+	}
+
+	public List<StarshipsDTO> getStarshipsAsDTO() {
+		List<StarshipsDTO> starshipsName = new ArrayList<>();
+		if (starships.size() > 0) {
+			for (String starshipsURL : starships) {
+				starshipsName.add(Injector.injectIntoStarships(Injector.getIDFromURL(starshipsURL)));
+			}
+		}
+		return starshipsName;
 	}
 
 	public void setStarships(List<String> starships) {
