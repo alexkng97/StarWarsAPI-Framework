@@ -40,4 +40,11 @@ public class ConnectionManagerTest {
 
 	}
 
+	@Test
+	@DisplayName("json file test")
+	void jsonFileTest() {
+		ConnectionManager test= new ConnectionManager("https://swapi.dev/api/people/1/");
+		System.out.println(test.getJSONFile());
+	}
+
 }

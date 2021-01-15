@@ -66,7 +66,9 @@ public class ConnectionManager {
 		return version.name();
 	}
 
-
+	public String getJSONFile(){
+		return httpResponse.body();
+	}
 
 
 }
