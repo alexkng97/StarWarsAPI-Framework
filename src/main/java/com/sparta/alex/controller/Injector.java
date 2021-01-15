@@ -18,6 +18,11 @@ public class Injector {
 
 	public static DTO injectByURL(String url){
 		String split[] = url.split("/");
+
+		if(split.length < 6){
+			return injectIntoBase(url);
+		}
+
 		int id = Integer.parseInt(split[5]);
 		switch(split[4]){
 			case "people":
@@ -131,6 +136,22 @@ public class Injector {
 		}
 
 		return starshipsDTO;
+	}
+
+	public static BaseDTO injectIntoBase(String url){
+
+		BaseDTO baseDTO = new BaseDTO();
+		ConnectionManager connectionManager = new ConnectionManager(url);
+		ObjectMapper objectMapper = new ObjectMapper();
+
+		try {
+			baseDTO = objectMapper.readValue(connectionManager.httpResponse.body(), BaseDTO.class);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return baseDTO;
 	}
 
 
